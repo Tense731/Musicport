@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Segun Abon - Gospel Music Portfolio</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+<!-- Navbar -->
+<header>
+  <div class="logo">Segun Abon</div>
+  <nav>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <ul id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="music.html">Music</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- MAIN CONTENT -->
+<main>
+  <!-- Hero Section -->
+  <section class="hero">
+    <img src="images/segun.jpg" alt="Segun Abon" class="hero-img" />
+    <h1>Welcome to Segun Abon’s Gospel World</h1>
+    <p>Experience the power of spirit-filled worship and heavenly praise through soul-lifting gospel music.</p>
+    <div class="hero-buttons">
+      <a href="music.html" class="btn">🎧 Listen Now</a>
+      <a href="about.html" class="btn secondary">📖 Learn More</a>
+    </div>
+  </section>
+
+  <div class="container">
+    <!-- Mission Section -->
+    <section class="section mission">
+      <h2>Our Mission</h2>
+      <p>Segun Abon is called to spread the gospel of Christ through sound, worship, and prophetic melodies. Every song is a message, every lyric a seed of revival.</p>
+    </section>
+
+    <!-- Featured Music -->
+    <section class="section music-preview">
+      <h2>🎵 Featured Tracks</h2>
+      <div class="music-row">
+        <div class="track">
+          <p>“Heavenly Light”</p>
+          <audio controls>
+            <source src="audio/sample.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+
+        <div class="track">
+          <p>“Praise Break”</p>
+          <audio controls>
+            <source src="audio/sample2.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+
+        <div class="track">
+          <p>“Spirit Move”</p>
+          <audio controls>
+            <source src="audio/sample3.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="section testimonial">
+      <h2>💬 What People Say</h2>
+      <blockquote>
+        “Segun Abon's music changed my life. I felt the presence of God during worship!”<br>
+        <span>– Sister Grace, CCC Idimu Parish</span>
+      </blockquote>
+      <blockquote>
+        “Segun Abon's music changed my life. I felt the presence of God during worship!”<br>
+        <span>– Sister Grace, CCC Idimu Parish</span>
+      </blockquote>
+      <blockquote>
+        “Segun Abon's music changed my life. I felt the presence of God during worship!”<br>
+        <span>– Sister Grace, CCC Idimu Parish</span>
+      </blockquote>
+    </section>
+
+    <!-- Events -->
+    <section class="section events">
+      <h2>📅 Upcoming Events</h2>
+      <ul>
+        <li><strong>August 18:</strong> Live ministration at Celestial Cathedral, Lagos</li>
+        <li><strong>September 1:</strong> Praise Night at CCC Makoko HQ</li>
+      </ul>
+    </section>
+
+    <!-- Gallery -->
+  
+
+    <!-- Newsletter -->
+    <section class="section newsletter">
+      <h2>📧 Join the Newsletter</h2>
+      <p>Stay updated with upcoming songs, events, and messages.</p>
+      <form>
+        <input type="email" placeholder="Your email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>&copy; 2025 Segun Abon. All rights reserved.</p>
+  <div class="socials">
+    <a href="#">Facebook</a> |
+    <a href="#">YouTube</a> |
+    <a href="#">Instagram</a> |
+    <a href="#">WhatsApp</a>
+  </div>
+</footer>
+
+<!-- Hamburger Menu Script -->
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById("nav-links");
+    nav.classList.toggle("show");
+  }
+</script>
+
+</body>
+</html>

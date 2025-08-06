@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Music - Segun Abon</title>
+  <link rel="stylesheet" href="music.css" />
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+
+</head>
+<body>
+
+  <div class="page-wrapper">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">Segun Abon</div>
+      <nav>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <ul id="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="music.html" class="active">Music</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Banner -->
+    <section class="banner">
+      <div class="banner-text">
+        <h1>Experience the Sound of Heaven</h1>
+        <p>Let Segun Abon's music lift your soul and draw you closer to God.</p>
+      </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="intro">
+      <h2>Welcome to the Music Store</h2>
+      <p>Segun Abon's songs are rich in spirit, sound, and scriptural truth. Browse through the tracks below, support the ministry, and enjoy access to downloadable gospel music after purchase.</p>
+    </section>
+
+    <!-- Music Section -->
+   <main class="music-section">
+  <div class="music-list">
+
+    <div class="music-item animate">
+      <img src="images/salvation.webp" alt="Salvation">
+      <h3>Salvation by Segun Abon</h3>
+      <audio controls>
+        <source src="sample/victory-chant.mp3" type="audio/mpeg">
+      </audio>
+      <button class="buy-btn" onclick="payWithPaystack1()">Buy & Download</button>
+    </div>
+
+    <div class="music-item animate">
+      <img src="images/mercy.webp" alt="Thy Mercy">
+      <h3>Thy Mercy by Segun Abon</h3>
+      <audio controls>
+        <source src="sample/heavens-gate.mp3" type="audio/mpeg">
+      </audio>
+      <button class="buy-btn" onclick="payWithPaystack2()">Buy & Download</button>
+    </div>
+
+    <div class="music-item animate">
+      <img src="images/grace.webp" alt="Agbara">
+      <h3>Agbara by Segun Abon</h3>
+      <audio controls>
+        <source src="sample/faithful-god.mp3" type="audio/mpeg">
+      </audio>
+      <button class="buy-btn" onclick="payWithPaystack3()">Buy & Download</button>
+    </div>
+
+    <div class="music-item animate">
+      <img src="images/new.webp" alt="Mo Fi Ogo">
+      <h3>Mo Fi Ogo by Segun Abon</h3>
+      <audio controls>
+        <source src="sample/faithful-god.mp3" type="audio/mpeg">
+      </audio>
+      <button class="buy-btn" onclick="payWithPaystack4()">Buy & Download</button>
+    </div>
+
+  </div>
+</main>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Segun Abon. All rights reserved.</p>
+    <div class="socials">
+      <a href="#">Facebook</a> |
+      <a href="#">YouTube</a> |
+      <a href="#">Instagram</a> |
+      <a href="#">WhatsApp</a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("nav-links");
+      nav.classList.toggle("show");
+    }
+  </script>
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script>
+  function payWithPaystack1() {
+    PaystackPop.setup({
+      key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+      email: 'buyer1@example.com',
+      amount: 1000 * 100,
+      currency: 'NGN',
+      callback: function(response) {
+        window.location.href = "https://drive.google.com/uc?export=download&id=1n42MgG91nApKuR07W6Ja0XhiMqWZukdE";
+      },
+    }).openIframe();
+  }
+
+  function payWithPaystack2() {
+    PaystackPop.setup({
+      key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+      email: 'buyer2@example.com',
+      amount: 1000 * 100,
+      currency: 'NGN',
+      callback: function(response) {
+        window.location.href = "https://drive.google.com/uc?export=download&id=1Jo5lffSsbjSgxmsFOqt3LvEjP16JwLs2";
+      },
+    }).openIframe();
+  }
+
+  function payWithPaystack3() {
+    PaystackPop.setup({
+      key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+      email: 'buyer3@example.com',
+      amount: 1000 * 100,
+      currency: 'NGN',
+      callback: function(response) {
+        window.location.href = "https://drive.google.com/uc?export=download&id=1DfJERQgoArPSgfG3HIu0bf4URt1AsuH2";
+      },
+    }).openIframe();
+  }
+
+  function payWithPaystack4() {
+    PaystackPop.setup({
+      key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+      email: 'buyer4@example.com',
+      amount: 1000 * 100,
+      currency: 'NGN',
+      callback: function(response) {
+        window.location.href = "https://drive.google.com/uc?export=download&id=1273CjEqzK2RQtmCpvdur3F3IqHAiTjdI";
+      },
+    }).openIframe();
+  }
+</script>
+
+
+</body>
+</html>
