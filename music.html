@@ -47,7 +47,7 @@
       <img src="images/salvation.webp" alt="Salvation">
       <h3>Salvation by Segun Abon</h3>
       <audio controls>
-        <source src="sample/victory-chant.mp3" type="audio/mpeg">
+        <source src="musics/Salvation.mp3" type="audio/mpeg">
       </audio>
       <button class="buy-btn" onclick="payWithPaystack1()">Buy & Download</button>
     </div>
@@ -56,7 +56,7 @@
       <img src="images/mercy.webp" alt="Thy Mercy">
       <h3>Thy Mercy by Segun Abon</h3>
       <audio controls>
-        <source src="sample/heavens-gate.mp3" type="audio/mpeg">
+        <source src="musics/Thy Mercy.mp3" type="audio/mpeg">
       </audio>
       <button class="buy-btn" onclick="payWithPaystack2()">Buy & Download</button>
     </div>
@@ -65,7 +65,7 @@
       <img src="images/grace.webp" alt="Agbara">
       <h3>Agbara by Segun Abon</h3>
       <audio controls>
-        <source src="sample/faithful-god.mp3" type="audio/mpeg">
+        <source src="musics/Thy Grace.mp3" type="audio/mpeg">
       </audio>
       <button class="buy-btn" onclick="payWithPaystack3()">Buy & Download</button>
     </div>
@@ -74,7 +74,7 @@
       <img src="images/new.webp" alt="Mo Fi Ogo">
       <h3>Mo Fi Ogo by Segun Abon</h3>
       <audio controls>
-        <source src="sample/faithful-god.mp3" type="audio/mpeg">
+        <source src="musics/Mo Fi Ogo.mp3" type="audio/mpeg">
       </audio>
       <button class="buy-btn" onclick="payWithPaystack4()">Buy & Download</button>
     </div>
@@ -106,7 +106,7 @@
   function payWithPaystack1() {
     PaystackPop.setup({
       key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
-      email: 'buyer1@example.com',
+      email: document.getElementById("email").value,
       amount: 1000 * 100,
       currency: 'NGN',
       callback: function(response) {
@@ -118,7 +118,7 @@
   function payWithPaystack2() {
     PaystackPop.setup({
       key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
-      email: 'buyer2@example.com',
+      email: document.getElementById("email").value,
       amount: 1000 * 100,
       currency: 'NGN',
       callback: function(response) {
@@ -130,7 +130,7 @@
   function payWithPaystack3() {
     PaystackPop.setup({
       key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
-      email: 'buyer3@example.com',
+      email: document.getElementById("email").value,
       amount: 1000 * 100,
       currency: 'NGN',
       callback: function(response) {
@@ -142,7 +142,7 @@
   function payWithPaystack4() {
     PaystackPop.setup({
       key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
-      email: 'buyer4@example.com',
+      email: document.getElementById("email").value,
       amount: 1000 * 100,
       currency: 'NGN',
       callback: function(response) {
