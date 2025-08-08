@@ -208,3 +208,22 @@ nav a.active {
   text-decoration: none;
   margin: 0 0.5rem;
 }
+.music-item input[type="email"] {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 10px 0;
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  justify-content: center;
+  align-items: center;
+}
+
+.music-item input[type="email"]:focus {
+  border-color: #009688; /* You can change this to match your theme */
+  box-shadow: 0 0 5px rgba(0, 150, 136, 0.2);
+}
