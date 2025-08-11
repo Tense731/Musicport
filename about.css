@@ -1,110 +1,4 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f8f6;
-  color: #1d2b36;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.navbar {
-  background-color: #1b1b2f;
-  color: white;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.nav-links {
-  display: flex;
-  gap: 1rem;
-}
-
-.nav-links a {
-  color: white;
-  text-decoration: none;
-}
-
-.hamburger {
-  display: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.main-content {
-  flex: 1;
-  padding: 2rem;
-  max-width: 800px;
-  margin: auto;
-}
-
-.about h1 {
-  color: #0d3b66;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.about .section {
-  margin-top: 2rem;
-}
-
-.about .section h2 {
-  color: #0d3b66;
-  margin-bottom: 0.5rem;
-}
-
-.footer {
-  background-color: #1b1b2f;
-  color: white;
-  text-align: center;
-  padding: 1rem;
-}
-
-.footer a {
-  color: white;
-  text-decoration: none;
-  margin: 0 0.5rem;
-}
-
-.show {
-  display: flex !important;
-  flex-direction: column;
-}
-
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    width: 100%;
-    background-color: #1b1b2f;
-    flex-direction: column;
-    padding: 1rem;
-  }
-
-  .nav-links a {
-    padding: 0.5rem 0;
-  }
-
-  .hamburger {
-    display: block;
-  }
-}
-/* Header & Nav */
+/* ================= Header & Nav (unchanged from finalized styles) ================= */
 header {
   background: #1b1b2f;
   color: white;
@@ -117,23 +11,29 @@ header {
   top: 0;
   z-index: 999;
 }
+
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
 }
+
 nav ul {
   display: flex;
   list-style: none;
   gap: 20px;
 }
+
 nav a {
   color: white;
   text-decoration: none;
   font-weight: 500;
+  transition: color 0.3s ease;
 }
+
 nav a:hover {
   color: #ffcc00;
 }
+
 .menu-toggle {
   display: none;
   background: none;
@@ -159,6 +59,7 @@ nav a:hover {
     width: 200px;
     padding: 10px 0;
     border-radius: 4px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
   }
 
   nav ul.show {
@@ -172,79 +73,101 @@ nav a:hover {
   }
 }
 
-/* Footer */
-.footer {
-  background: #1b1b2f;
-  color: white;
-  padding: 1rem 2rem;
-  text-align: center;
-}
-.footer a {
-  color: #ffcc00;
-  text-decoration: none;
-}
-/* Make footer sticky */
-html, body {
-  height: 100%;
+/* ================= Body & Page Wrapper ================= */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f8f6;
+  color: #1d2b36;
+  line-height: 1.6;
   margin: 0;
   padding: 0;
 }
 
 .page-wrapper {
-  min-height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-main {
-  flex: 1;
-}
+/* ================= Main Content Area ================= */
 .about-main {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 50px 25px;
-  background-color: #f4f9ff; /* light blue background */
-  color: #1a1a1a;
-  font-family: 'Segoe UI', sans-serif;
+  max-width: 900px;
+  margin: 3rem auto 4rem;
+  padding: 2.5rem 2rem;
+  background: #e9f2fa; /* soft light blue */
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 64, 128, 0.1);
+  font-size: 1.125rem;
+  color: #203040;
 }
 
+/* Sections */
 .section {
   background-color: #ffffff;
-  border-left: 5px solid #1b1b2f;
-  padding: 30px 25px;
-  margin-bottom: 30px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  border-radius: 6px;
-  transition: transform 0.3s ease;
+  border-left: 6px solid #004080; /* strong navy accent */
+  padding: 2rem 2.5rem;
+  margin-bottom: 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .section:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0, 64, 128, 0.15);
 }
 
-.section h1,
+/* Headings */
+.section h1, 
 .section h2 {
   color: #003366;
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .section h1 {
-  font-size: 32px;
-  border-bottom: 2px solid #ffd700;
-  padding-bottom: 10px;
+  font-size: 2.5rem;
+  border-bottom: 3px solid #ffd700; /* gold underline */
+  padding-bottom: 0.5rem;
 }
 
 .section h2 {
-  font-size: 24px;
+  font-size: 1.75rem;
   color: #00509e;
+  margin-top: 0;
 }
 
+/* Paragraphs */
 .section p {
-  font-size: 16px;
+  font-size: 1.125rem;
   line-height: 1.8;
-  color: #333;
+  color: #2a3b50;
+  margin-bottom: 1rem;
 }
-/* Animations */
+
+/* ================= Footer ================= */
+.footer {
+  background: #1b1b2f;
+  color: white;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+}
+
+.footer a {
+  color: #ffcc00;
+  text-decoration: none;
+  margin: 0 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #ffd633;
+}
+
+/* ================= Animations ================= */
 @keyframes fadeInUp {
   0% {
     opacity: 0;
@@ -278,7 +201,6 @@ main {
   }
 }
 
-/* Add this class to sections or elements you want to animate */
 .animate-fade {
   animation: fadeInUp 1s ease-out forwards;
   opacity: 0;
@@ -294,8 +216,92 @@ main {
   opacity: 0;
 }
 
-/* Optional: Add delay to stagger animations */
 .delay-1 { animation-delay: 0.3s; }
 .delay-2 { animation-delay: 0.6s; }
 .delay-3 { animation-delay: 0.9s; }
 
+/* ================= Responsive ================= */
+@media (max-width: 768px) {
+  .about-main {
+    margin: 2rem 1rem 3rem;
+    padding: 1.5rem 1.5rem;
+  }
+
+  .section {
+    padding: 1.5rem 1.5rem;
+  }
+
+  .section h1 {
+    font-size: 2rem;
+  }
+
+  .section h2 {
+    font-size: 1.4rem;
+  }
+
+  .section p {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background: #0b1234;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    padding: 10px 0;
+    border-radius: 4px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  nav li {
+    text-align: center;
+    padding: 10px 0;
+    margin: 0;
+  }
+
+  nav a {
+    display: inline-block;    /* <-- changed from block */
+    padding: 8px 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Highlight only behind text, not full width */
+  nav a:hover,
+  nav a:focus {
+    background-color: #ffcc00;
+    color: #004080;
+    outline: none;
+  }
+}
+  html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;  /* Makes main expand to fill space */
+}
+
+/* Footer stays at bottom because main grows */
+.footer {
+  background: #1b1b2f;
+  color: white;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  flex-shrink: 0; /* prevent footer from shrinking */
+}

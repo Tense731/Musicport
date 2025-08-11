@@ -8,12 +8,9 @@
   <script src="https://js.paystack.co/v1/inline.js"></script>
 
   <style>
-    /* Hide native audio */
     audio {
       display: none;
     }
-
-    /* Style for email inputs */
     .music-item input[type="email"] {
       display: block;
       width: 100%;
@@ -24,8 +21,6 @@
       border: 1px solid #ccc;
       border-radius: 6px;
     }
-
-    /* Custom controls */
     .custom-controls button {
       padding: 8px 16px;
       margin-right: 8px;
@@ -35,11 +30,9 @@
       border-radius: 6px;
       cursor: pointer;
     }
-
     .custom-controls button:hover {
       background-color: #00796b;
     }
-
     .buy-btn {
       margin-top: 10px;
       padding: 10px 16px;
@@ -49,7 +42,6 @@
       border-radius: 6px;
       cursor: pointer;
     }
-
     .buy-btn:hover {
       background-color: #512da8;
     }
@@ -58,7 +50,6 @@
 <body>
 
   <div class="page-wrapper">
-    <!-- Header -->
     <header class="header">
       <div class="logo">Segun Abon</div>
       <nav>
@@ -72,7 +63,6 @@
       </nav>
     </header>
 
-    <!-- Banner -->
     <section class="banner">
       <div class="banner-text">
         <h1>Experience the Sound of Heaven</h1>
@@ -80,16 +70,13 @@
       </div>
     </section>
 
-    <!-- Intro Section -->
     <section class="intro">
       <h2>Welcome to the Music Store</h2>
       <p>Segun Abon's songs are rich in spirit, sound, and scriptural truth. Browse through the tracks below, support the ministry, and enjoy access to downloadable gospel music after purchase.</p>
     </section>
 
-    <!-- Music Section -->
     <main class="music-section">
       <div class="music-list">
-
         <!-- Song 1 -->
         <div class="music-item animate">
           <img src="images/salvation.webp" alt="Salvation">
@@ -98,7 +85,7 @@
             <source src="musics/Salvation.mp3" type="audio/mpeg">
           </audio>
           <div class="custom-controls">
-            <button onclick="playAudio('audio1')">▶ Play</button>
+            <button onclick="playPreview('audio1')">▶ Play</button>
             <button onclick="pauseAudio('audio1')">⏸ Pause</button>
           </div>
           <input type="email" id="email1" placeholder="Enter your email" required />
@@ -113,7 +100,7 @@
             <source src="musics/Thy Mercy.mp3" type="audio/mpeg">
           </audio>
           <div class="custom-controls">
-            <button onclick="playAudio('audio2')">▶ Play</button>
+            <button onclick="playPreview('audio2')">▶ Play</button>
             <button onclick="pauseAudio('audio2')">⏸ Pause</button>
           </div>
           <input type="email" id="email2" placeholder="Enter your email" required />
@@ -128,7 +115,7 @@
             <source src="musics/Thy Grace.mp3" type="audio/mpeg">
           </audio>
           <div class="custom-controls">
-            <button onclick="playAudio('audio3')">▶ Play</button>
+            <button onclick="playPreview('audio3')">▶ Play</button>
             <button onclick="pauseAudio('audio3')">⏸ Pause</button>
           </div>
           <input type="email" id="email3" placeholder="Enter your email" required />
@@ -143,18 +130,16 @@
             <source src="musics/Mo Fi Ogo.mp3" type="audio/mpeg">
           </audio>
           <div class="custom-controls">
-            <button onclick="playAudio('audio4')">▶ Play</button>
+            <button onclick="playPreview('audio4')">▶ Play</button>
             <button onclick="pauseAudio('audio4')">⏸ Pause</button>
           </div>
           <input type="email" id="email4" placeholder="Enter your email" required />
           <button class="buy-btn" onclick="payWithPaystack4()">Buy & Download</button>
         </div>
-
       </div>
     </main>
   </div>
 
-  <!-- Footer -->
   <footer class="footer">
     <p>&copy; 2025 Segun Abon. All rights reserved.</p>
     <div class="socials">
@@ -165,18 +150,20 @@
     </div>
   </footer>
 
-  <!-- Toggle Menu Script -->
   <script>
     function toggleMenu() {
       const nav = document.getElementById("nav-links");
       nav.classList.toggle("show");
     }
-  </script>
 
-  <!-- Audio Play/Pause Functions -->
-  <script>
-    function playAudio(id) {
-      document.getElementById(id).play();
+    function playPreview(id) {
+      const audio = document.getElementById(id);
+      audio.currentTime = 0;
+      audio.play();
+      setTimeout(() => {
+        audio.pause();
+        audio.currentTime = 0;
+      }, 10000); // 10 seconds preview
     }
 
     function pauseAudio(id) {
@@ -184,7 +171,6 @@
     }
   </script>
 
-  <!-- Paystack Scripts -->
   <script>
     function payWithPaystack1() {
       const email = document.getElementById("email1").value;

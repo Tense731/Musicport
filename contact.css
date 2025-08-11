@@ -329,3 +329,49 @@ nav a.active {
   from { opacity: 0; transform: translateY(-30px); }
   to { opacity: 1; transform: translateY(0); }
 }
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background: #1b1b2f;
+    position: absolute;
+    right: 1rem;
+    top: 60px;
+    width: 200px;
+    padding: 10px 0;
+    border-radius: 6px;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  nav li {
+    text-align: center;
+    padding: 10px 0;
+    margin: 0;
+  }
+
+  nav li a {
+    display: inline-block;  /* Make width only as wide as text */
+    padding: 5px 15px;      /* Add some horizontal padding */
+  }
+
+  /* Highlight background on tap/focus/hover */
+  nav li a:active,
+  nav li a:focus,
+  nav li a:focus-visible,
+  nav li a:hover {
+    background-color: #ffcc00;
+    color: #1b1b2f;
+    border-radius: 4px;
+    text-decoration: none; /* Remove underline on hover/focus */
+  }
+
+  /* Remove underline on the active contact link */
+  nav a.active {
+    border-bottom: none !important;
+    text-decoration: none !important;
+    color: #ffcc00;
+  }
+}
