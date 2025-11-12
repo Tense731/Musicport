@@ -45,11 +45,58 @@
     .buy-btn:hover {
       background-color: #512da8;
     }
+    /* Share Button */
+.custom-controls.share-btn {
+  background-color: #FFD700; /* Yellow tone to match your site */
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  margin-top: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.custom-controls.share-btn:hover {
+  background-color: #ffcc00;
+  transform: scale(1.05);
+}
+
+.custom-controls.share-btn:active {
+  transform: scale(0.95);
+}
+
+  /* Highlight effect for focused song */
+  .music-item.highlight {
+    box-shadow: 0 0 0 4px #FFD700, 0 2px 8px rgba(0,0,0,0.15);
+    background: #fffbe7;
+    transition: box-shadow 0.4s, background 0.4s;
+    z-index: 2;
+    position: relative;
+  }
+
   </style>
 </head>
 <body>
 
   <div class="page-wrapper">
+    <script>
+      // Highlight the song when navigated via hash
+      function highlightSongFromHash() {
+        document.querySelectorAll('.music-item.highlight').forEach(el => el.classList.remove('highlight'));
+        const hash = window.location.hash;
+        if (hash && hash.startsWith('#song')) {
+          const songDiv = document.querySelector(hash);
+          if (songDiv) {
+            songDiv.classList.add('highlight');
+            songDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }
+      }
+      window.addEventListener('DOMContentLoaded', highlightSongFromHash);
+      window.addEventListener('hashchange', highlightSongFromHash);
+    </script>
     <header class="header">
       <div class="logo">Segun Abon</div>
       <nav>
@@ -78,8 +125,8 @@
     <main class="music-section">
       <div class="music-list">
         <!-- Song 1 -->
-        <div class="music-item animate">
-          <img src="images/salvation.webp" alt="Salvation">
+  <div class="music-item animate" id="song1">
+          <img src="images/salvation.webp" alt="Thy Mercy">
           <h3>Salvation by Segun Abon</h3>
           <audio id="audio1">
             <source src="musics/Salvation.mp3" type="audio/mpeg">
@@ -90,10 +137,44 @@
           </div>
           <input type="email" id="email1" placeholder="Enter your email" required />
           <button class="buy-btn" onclick="payWithPaystack1()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('Salvation by Segun Abon', window.location.origin + window.location.pathname + '#song1', 'images/salvation.webp')">Share</button>
+          <div class="social-share-btns" data-song-title="Salvation by Segun Abon" data-song-id="song1" data-image="images/salvation.webp"></div>
+        </div>  
+          <!-- Song 25 -->
+  <div class="music-item animate" id="song25">
+          <img src="images/king.webp" alt="Thy Mercy">
+          <h3>Everlasting King by Segun Abon</h3>
+          <audio id="audio25">
+            <source src="musics/Everlasting King.mp3" type="audio/mpeg">
+          </audio>
+          <div class="custom-controls">
+            <button onclick="playPreview('audio25')">▶ Play</button>
+            <button onclick="pauseAudio('audio25')">⏸ Pause</button>
+          </div>
+          <input type="email" id="email25" placeholder="Enter your email" required />
+          <button class="buy-btn" onclick="payWithPaystack25()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('Everlasting King by Segun Abon', window.location.origin + window.location.pathname + '#song25', 'images/king.webp')">Share</button>
+          <div class="social-share-btns" data-song-title="Everlasting King by Segun Abon" data-song-id="song25" data-image="images/king.webp"></div>
+        </div>
+            <!-- Song 26 -->
+  <div class="music-item animate" id="song26">
+          <img src="images/trinity.webp" alt="Thy Mercy">
+          <h3>Trinity by Segun Abon</h3>
+          <audio id="audio26">
+            <source src="musics/Trinity.mp3" type="audio/mpeg">
+          </audio>
+          <div class="custom-controls">
+            <button onclick="playPreview('audio26')">▶ Play</button>
+            <button onclick="pauseAudio('audio26')">⏸ Pause</button>
+          </div>
+          <input type="email" id="email26" placeholder="Enter your email" required />
+          <button class="buy-btn" onclick="payWithPaystack26()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('Trinity by Segun Abon', window.location.origin + window.location.pathname + '#song26', 'images/trinity.webp')">Share</button>
+          <div class="social-share-btns" data-song-title="Trinity by Segun Abon" data-song-id="song26" data-image="images/trinity.webp"></div>
         </div>
 
         <!-- Song 2 -->
-        <div class="music-item animate">
+  <div class="music-item animate" id="song2">
           <img src="images/mercy.webp" alt="Thy Mercy">
           <h3>Thy Mercy by Segun Abon</h3>
           <audio id="audio2">
@@ -105,12 +186,14 @@
           </div>
           <input type="email" id="email2" placeholder="Enter your email" required />
           <button class="buy-btn" onclick="payWithPaystack2()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('Thy Mercy by Segun Abon', window.location.origin + window.location.pathname + '#song2', 'images/mercy.webp')">Share</button>
+          <div class="social-share-btns" data-song-title="Thy Mercy by Segun Abon" data-song-id="song2" data-image="images/mercy.webp"></div>
         </div>
 
         <!-- Song 3 -->
-        <div class="music-item animate">
+  <div class="music-item animate" id="song3">
           <img src="images/grace.webp" alt="Agbara">
-          <h3>Agbara by Segun Abon</h3>
+          <h3>Thy Grace by Segun Abon</h3>
           <audio id="audio3">
             <source src="musics/Thy Grace.mp3" type="audio/mpeg">
           </audio>
@@ -120,22 +203,352 @@
           </div>
           <input type="email" id="email3" placeholder="Enter your email" required />
           <button class="buy-btn" onclick="payWithPaystack3()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('Thy Grace by Segun Abon', window.location.origin + window.location.pathname + '#song3', 'images/grace.webp')">Share</button>
+          <div class="social-share-btns" data-song-title="Thy Grace by Segun Abon" data-song-id="song3" data-image="images/grace.webp"></div>
         </div>
-
-        <!-- Song 4 -->
-        <div class="music-item animate">
-          <img src="images/new.webp" alt="Mo Fi Ogo">
-          <h3>Mo Fi Ogo by Segun Abon</h3>
+   <!-- Song 4 -->
+  <div class="music-item animate" id="song4">
+          <img src="images/god.webp" alt="Agbara">
+          <h3>Aditu Onise Nla by Segun Abon</h3>
           <audio id="audio4">
-            <source src="musics/Mo Fi Ogo.mp3" type="audio/mpeg">
+            <source src="musics/Aditu Onise Nla.mp3" type="audio/mpeg">
           </audio>
           <div class="custom-controls">
             <button onclick="playPreview('audio4')">▶ Play</button>
             <button onclick="pauseAudio('audio4')">⏸ Pause</button>
           </div>
-          <input type="email" id="email4" placeholder="Enter your email" required />
+          <input type="email" id="email3" placeholder="Enter your email" required />
           <button class="buy-btn" onclick="payWithPaystack4()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('Aditu Onise Nla by Segun Abon', window.location.origin + window.location.pathname + '#song4', 'images/god.webp')">Share</button>
+          <div class="social-share-btns" data-song-title="Aditu Onise Nla by Segun Abon" data-song-id="song4" data-image="images/god.webp"></div>
         </div>
+
+        <!-- Song 5 -->
+  <div class="music-item animate" id="song5">
+          <img src="images/new.webp" alt="Mo Fi Ogo">
+          <h3>Mo Fi Ogo by Segun Abon</h3>
+          <audio id="audio5">
+            <source src="musics/Mo Fi Ogo.mp3" type="audio/mpeg">
+          </audio>
+          <div class="custom-controls">
+            <button onclick="playPreview('audio5')">▶ Play</button>
+            <button onclick="pauseAudio('audio5')">⏸ Pause</button>
+          </div>
+          <input type="email" id="email5" placeholder="Enter your email" required />
+          <button class="buy-btn" onclick="payWithPaystack5()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('Mo Fi Ogo by Segun Abon', window.location.origin + window.location.pathname + '#song5', 'images/new.webp')">Share</button>
+          <div class="social-share-btns" data-song-title="Mo Fi Ogo by Segun Abon" data-song-id="song5" data-image="images/new.webp"></div>
+        </div>
+
+         <!-- Song 6 -->
+  <div class="music-item animate" id="song6">
+          <img src="images/segun live.jpg" alt="Mo Fi Ogo">
+          <h3>Segun Abon Live On Stage</h3>
+          <audio id="audio6">
+            <source src="musics/ABON 2024.mp3" type="audio/mpeg">
+          </audio>
+          <div class="custom-controls">
+            <button onclick="playPreview('audio6')">▶ Play</button>
+            <button onclick="pauseAudio('audio6')">⏸ Pause</button>
+          </div>
+          <input type="email" id="email6" placeholder="Enter your email" required />
+          <button class="buy-btn" onclick="payWithPaystack6()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('Segun Abon Live On Stage', window.location.origin + window.location.pathname + '#song6', 'images/segun live.jpg')">Share</button>
+          <div class="social-share-btns" data-song-title="Segun Abon Live On Stage" data-song-id="song6" data-image="images/segun live.jpg"></div>
+        </div>
+
+  <!-- Song 7 -->
+  <div class="music-item animate" id="song7">
+          <img src="images/new.webp" alt="Mo Fi Ogo">
+          <h3>Igi Igbo By Segun Abon</h3>
+          <audio id="audio7">
+            <source src="musics/Okiki.mp3" type="audio/mpeg">
+          </audio>
+          <div class="custom-controls">
+            <button onclick="playPreview('audio7')">▶ Play</button>
+            <button onclick="pauseAudio('audio7')">⏸ Pause</button>
+          </div>
+          <input type="email" id="email7" placeholder="Enter your email" required />
+          <button class="buy-btn" onclick="payWithPaystack7()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('Igi Igbo By Segun Abon', window.location.origin + window.location.pathname + '#song7', 'images/new.webp')">Share</button>
+          <div class="social-share-btns" data-song-title="Igi Igbo By Segun Abon" data-song-id="song7" data-image="images/new.webp"></div>
+        </div>
+  <!-- Song 8 -->
+  <div class="music-item animate" id="song8">
+          <img src="images/segun live.jpg" alt="Mo Fi Ogo">
+          <h3>Segun Abon Live On Stage</h3>
+          <audio id="audio8">
+            <source src="musics/Segun Abon 2024  A.mp3" type="audio/mpeg">
+          </audio>
+          <div class="custom-controls">
+            <button onclick="playPreview('audio8')">▶ Play</button>
+            <button onclick="pauseAudio('audio8')">⏸ Pause</button>
+          </div>
+          <input type="email" id="email8" placeholder="Enter your email" required />
+          <button class="buy-btn" onclick="payWithPaystack8()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('Segun Abon Live On Stage', window.location.origin + window.location.pathname + '#song8', 'images/segun live.jpg')">Share</button>
+          <div class="social-share-btns" data-song-title="Segun Abon Live On Stage" data-song-id="song8" data-image="images/segun live.jpg"></div>
+        </div>
+          <!-- Song 9 -->
+  <div class="music-item animate" id="song9">
+          <img src="images/new.webp" alt="Mo Fi Ogo">
+          <h3>Mo Jewo Agbara by Segun Abon</h3>
+          <audio id="audio9">
+            <source src="musics/Mo Jewo Agbara.mp3" type="audio/mpeg">
+          </audio>
+          <div class="custom-controls">
+            <button onclick="playPreview('audio9')">▶ Play</button>
+            <button onclick="pauseAudio('audio9')">⏸ Pause</button>
+          </div>
+          <input type="email" id="email9" placeholder="Enter your email" required />
+          <button class="buy-btn" onclick="payWithPaystack9()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('Mo Jewo Agbara by Segun Abon', window.location.origin + window.location.pathname + '#song9', 'images/new.webp')">Share</button>
+          <div class="social-share-btns" data-song-title="Mo Jewo Agbara by Segun Abon" data-song-id="song9" data-image="images/new.webp"></div>
+        </div>
+              <!-- Song 10 -->
+  <div class="music-item animate" id="song10">
+          <img src="images/new.webp" alt="Mo Fi Ogo">
+          <h3>New Song by Segun Abon</h3>
+          <audio id="audio10">
+            <source src="musics/New Song.mp3" type="audio/mpeg">
+          </audio>
+          <div class="custom-controls">
+            <button onclick="playPreview('audio10')">▶ Play</button>
+            <button onclick="pauseAudio('audio10')">⏸ Pause</button>
+          </div>
+          <input type="email" id="email10" placeholder="Enter your email" required />
+          <button class="buy-btn" onclick="payWithPaystack10()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('New Song by Segun Abon', window.location.origin + window.location.pathname + '#song10', 'images/new.webp')">Share</button>
+          <div class="social-share-btns" data-song-title="New Song by Segun Abon" data-song-id="song10" data-image="images/new.webp"></div>
+        </div>
+                 <!-- Song 11 -->
+  <div class="music-item animate" id="song11">
+          <img src="images/grace.webp" alt="Mo Fi Ogo">
+          <h3>Jeko Yemi by Segun Abon</h3>
+          <audio id="audio11">
+            <source src="musics/Jeko Yemi.mp3" type="audio/mpeg">
+          </audio>
+          <div class="custom-controls">
+            <button onclick="playPreview('audio11')">▶ Play</button>
+            <button onclick="pauseAudio('audio11')">⏸ Pause</button>
+          </div>
+          <input type="email" id="email10" placeholder="Enter your email" required />
+          <button class="buy-btn" onclick="payWithPaystack11()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('Jeko Yemi by Segun Abon', window.location.origin + window.location.pathname + '#song11', 'images/grace.webp')">Share</button>
+          <div class="social-share-btns" data-song-title="Jeko Yemi by Segun Abon" data-song-id="song11" data-image="images/grace.webp"></div>
+        </div>
+               <!-- Song 12 -->
+  <div class="music-item animate" id="song12">
+          <img src="images/grace.webp" alt="Mo Fi Ogo">
+          <h3>Ijo Mimo by Segun Abon</h3>
+          <audio id="audio12">
+            <source src="musics/Ijo mimo.mp3" type="audio/mpeg">
+          </audio>
+          <div class="custom-controls">
+            <button onclick="playPreview('audio12')">▶ Play</button>
+            <button onclick="pauseAudio('audio12')">⏸ Pause</button>
+          </div>
+          <input type="email" id="email12" placeholder="Enter your email" required />
+          <button class="buy-btn" onclick="payWithPaystack12()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('Ijo Mimo by Segun Abon', window.location.origin + window.location.pathname + '#song12', 'images/grace.webp')">Share</button>
+          <div class="social-share-btns" data-song-title="Ijo Mimo by Segun Abon" data-song-id="song12" data-image="images/grace.webp"></div>
+        </div>
+              <!-- Song 13 -->
+  <div class="music-item animate" id="song13">
+          <img src="images/grace.webp" alt="Mo Fi Ogo">
+          <h3>Eyin Oluwa by Segun Abon</h3>
+          <audio id="audio13">
+            <source src="musics/Eyin Oluwa.mp3" type="audio/mpeg">
+          </audio>
+          <div class="custom-controls">
+            <button onclick="playPreview('audio13')">▶ Play</button>
+            <button onclick="pauseAudio('audio13')">⏸ Pause</button>
+          </div>
+          <input type="email" id="email13" placeholder="Enter your email" required />
+          <button class="buy-btn" onclick="payWithPaystack13()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('Eyin Oluwa by Segun Abon', window.location.origin + window.location.pathname + '#song13', 'images/grace.webp')">Share</button>
+          <div class="social-share-btns" data-song-title="Eyin Oluwa by Segun Abon" data-song-id="song13" data-image="images/grace.webp"></div>
+        </div>
+             <!-- Song 14 -->
+  <div class="music-item animate" id="song14">
+          <img src="images/grace.webp" alt="Mo Fi Ogo">
+          <h3>Agbara by Segun Abon</h3>
+          <audio id="audio14">
+            <source src="musics/Agbara.mp3" type="audio/mpeg">
+          </audio>
+          <div class="custom-controls">
+            <button onclick="playPreview('audio14')">▶ Play</button>
+            <button onclick="pauseAudio('audio14')">⏸ Pause</button>
+          </div>
+          <input type="email" id="email14" placeholder="Enter your email" required />
+          <button class="buy-btn" onclick="payWithPaystack14()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('Agbara by Segun Abon', window.location.origin + window.location.pathname + '#song14', 'images/grace.webp')">Share</button>
+          <div class="social-share-btns" data-song-title="Agbara by Segun Abon" data-song-id="song14" data-image="images/grace.webp"></div>
+        </div>
+              <!-- Song 15 -->
+  <div class="music-item animate" id="song15">
+          <img src="images/mercy.webp" alt="Mo Fi Ogo">
+          <h3>Adaba by Segun Abon</h3>
+          <audio id="audio15">
+            <source src="musics/Adaba.mp3" type="audio/mpeg">
+          </audio>
+          <div class="custom-controls">
+            <button onclick="playPreview('audio15')">▶ Play</button>
+            <button onclick="pauseAudio('audio15')">⏸ Pause</button>
+          </div>
+          <input type="email" id="email15" placeholder="Enter your email" required />
+          <button class="buy-btn" onclick="payWithPaystack15()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('Adaba by Segun Abon', window.location.origin + window.location.pathname + '#song15', 'images/mercy.webp')">Share</button>
+          <div class="social-share-btns" data-song-title="Adaba by Segun Abon" data-song-id="song15" data-image="images/mercy.webp"></div>
+        </div>
+               <!-- Song 16 -->
+  <div class="music-item animate" id="song16">
+          <img src="images/mercy.webp" alt="Mo Fi Ogo">
+          <h3>Majemu by Segun Abon</h3>
+          <audio id="audio16">
+            <source src="musics/Majemu.mp3" type="audio/mpeg">
+          </audio>
+          <div class="custom-controls">
+            <button onclick="playPreview('audio16')">▶ Play</button>
+            <button onclick="pauseAudio('audio16')">⏸ Pause</button>
+          </div>
+          <input type="email" id="email16" placeholder="Enter your email" required />
+          <button class="buy-btn" onclick="payWithPaystack16()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('Majemu by Segun Abon', window.location.origin + window.location.pathname + '#song16', 'images/mercy.webp')">Share</button>
+          <div class="social-share-btns" data-song-title="Majemu by Segun Abon" data-song-id="song16" data-image="images/mercy.webp"></div>
+        </div>
+              <!-- Song 17 -->
+  <div class="music-item animate" id="song17">
+          <img src="images/mercy.webp" alt="Mo Fi Ogo">
+          <h3>Olorire by Segun Abon</h3>
+          <audio id="audio17">
+            <source src="musics/Oloriire.mp3" type="audio/mpeg">
+          </audio>
+          <div class="custom-controls">
+            <button onclick="playPreview('audio17')">▶ Play</button>
+            <button onclick="pauseAudio('audio17')">⏸ Pause</button>
+          </div>
+          <input type="email" id="email17" placeholder="Enter your email" required />
+          <button class="buy-btn" onclick="payWithPaystack17()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('Olorire by Segun Abon', window.location.origin + window.location.pathname + '#song17', 'images/mercy.webp')">Share</button>
+          <div class="social-share-btns" data-song-title="Olorire by Segun Abon" data-song-id="song17" data-image="images/mercy.webp"></div>
+        </div>
+             <!-- Song 18 -->
+  <div class="music-item animate" id="song18">
+          <img src="images/mercy.webp" alt="Mo Fi Ogo">
+          <h3>Olorun by Segun Abon</h3>
+          <audio id="audio18">
+            <source src="musics/Olorun.mp3" type="audio/mpeg">
+          </audio>
+          <div class="custom-controls">
+            <button onclick="playPreview('audio18')">▶ Play</button>
+            <button onclick="pauseAudio('audio18')">⏸ Pause</button>
+          </div>
+          <input type="email" id="email18" placeholder="Enter your email" required />
+          <button class="buy-btn" onclick="payWithPaystack18()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('Olorun by Segun Abon', window.location.origin + window.location.pathname + '#song18', 'images/mercy.webp')">Share</button>
+          <div class="social-share-btns" data-song-title="Olorun by Segun Abon" data-song-id="song18" data-image="images/mercy.webp"></div>
+        </div>
+               <!-- Song 19 -->
+  <div class="music-item animate" id="song19">
+          <img src="images/mercy.webp" alt="Mo Fi Ogo">
+          <h3>Mo Tito Jesu Yi Wo by Segun Abon</h3>
+          <audio id="audio19">
+            <source src="musics/Motion Too Jesu Yi Wo.mp3" type="audio/mpeg">
+          </audio>
+          <div class="custom-controls">
+            <button onclick="playPreview('audio19')">▶ Play</button>
+            <button onclick="pauseAudio('audio19')">⏸ Pause</button>
+          </div>
+          <input type="email" id="email19" placeholder="Enter your email" required />
+          <button class="buy-btn" onclick="payWithPaystack19()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('Mo Tito Jesu Yi Wo by Segun Abon', window.location.origin + window.location.pathname + '#song19', 'images/mercy.webp')">Share</button>
+          <div class="social-share-btns" data-song-title="Mo Tito Jesu Yi Wo by Segun Abon" data-song-id="song19" data-image="images/mercy.webp"></div>
+        </div>
+               <!-- Song 20 -->
+  <div class="music-item animate" id="song20">
+          <img src="images/promise.webp" alt="Mo Fi Ogo">
+          <h3>Isoji by Segun Abon</h3>
+          <audio id="audio20">
+            <source src="musics/Promise Land (Part one).mp3" type="audio/mpeg">
+          </audio>
+          <div class="custom-controls">
+            <button onclick="playPreview('audio20')">▶ Play</button>
+            <button onclick="pauseAudio('audio20')">⏸ Pause</button>
+          </div>
+          <input type="email" id="email20" placeholder="Enter your email" required />
+          <button class="buy-btn" onclick="payWithPaystack20()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('Isoji by Segun Abon', window.location.origin + window.location.pathname + '#song20', 'images/promise.webp')">Share</button>
+          <div class="social-share-btns" data-song-title="Isoji by Segun Abon" data-song-id="song20" data-image="images/promise.webp"></div>
+        </div>
+            <!-- Song 21 -->
+  <div class="music-item animate" id="song21">
+          <img src="images/promise.webp" alt="Mo Fi Ogo">
+          <h3>Promise Land (original) by Segun Abon</h3>
+          <audio id="audio21">
+            <source src="musics/Promise Land (Part two).mp3" type="audio/mpeg">
+          </audio>
+          <div class="custom-controls">
+            <button onclick="playPreview('audio21')">▶ Play</button>
+            <button onclick="pauseAudio('audio21')">⏸ Pause</button>
+          </div>
+          <input type="email" id="email21" placeholder="Enter your email" required />
+          <button class="buy-btn" onclick="payWithPaystack21()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('Promise Land (original) by Segun Abon', window.location.origin + window.location.pathname + '#song21', 'images/promise.webp')">Share</button>
+          <div class="social-share-btns" data-song-title="Promise Land (original) by Segun Abon" data-song-id="song21" data-image="images/promise.webp"></div>
+        </div>
+           <!-- Song 22 -->
+  <div class="music-item animate" id="song22">
+          <img src="images/promise.webp" alt="Mo Fi Ogo">
+          <h3>Modupe by Segun Abon</h3>
+          <audio id="audio22">
+            <source src="musics/Promise Land (Part three).mp3" type="audio/mpeg">
+          </audio>
+          <div class="custom-controls">
+            <button onclick="playPreview('audio22')">▶ Play</button>
+            <button onclick="pauseAudio('audio22')">⏸ Pause</button>
+          </div>
+          <input type="email" id="email22" placeholder="Enter your email" required />
+          <button class="buy-btn" onclick="payWithPaystack22()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('Modupe by Segun Abon', window.location.origin + window.location.pathname + '#song22', 'images/promise.webp')">Share</button>
+          <div class="social-share-btns" data-song-title="Modupe by Segun Abon" data-song-id="song22" data-image="images/promise.webp"></div>
+        </div>
+           <!-- Song 23 -->
+  <div class="music-item animate" id="song23">
+          <img src="images/promise.webp" alt="Mo Fi Ogo">
+          <h3>Promise Land (Remix) by Segun Abon</h3>
+          <audio id="audio23">
+            <source src="musics/Promise Land (Part four).mp3" type="audio/mpeg">
+          </audio>
+          <div class="custom-controls">
+            <button onclick="playPreview('audio23')">▶ Play</button>
+            <button onclick="pauseAudio('audio23')">⏸ Pause</button>
+          </div>
+          <input type="email" id="email23" placeholder="Enter your email" required />
+          <button class="buy-btn" onclick="payWithPaystack23()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('Promise Land (Remix) by Segun Abon', window.location.origin + window.location.pathname + '#song23', 'images/promise.webp')">Share</button>
+          <div class="social-share-btns" data-song-title="Promise Land (Remix) by Segun Abon" data-song-id="song23" data-image="images/promise.webp"></div>
+        </div>
+          <!-- Song 24 -->
+  <div class="music-item animate" id="song24">
+          <img src="images/promise.webp" alt="Mo Fi Ogo">
+          <h3>Baba Ese by Segun Abon</h3>
+          <audio id="audio24">
+            <source src="musics/Promise Land (Part five).mp3" type="audio/mpeg">
+          </audio>
+          <div class="custom-controls">
+            <button onclick="playPreview('audio24')">▶ Play</button>
+            <button onclick="pauseAudio('audio24')">⏸ Pause</button>
+          </div>
+          <input type="email" id="email24" placeholder="Enter your email" required />
+          <button class="buy-btn" onclick="payWithPaystack24()">Buy & Download</button>
+              <button class="custom-controls share-btn" onclick="shareMusic('Baba Ese by Segun Abon', window.location.origin + window.location.pathname + '#song24', 'images/promise.webp')">Share</button>
+          <div class="social-share-btns" data-song-title="Baba Ese by Segun Abon" data-song-id="song24" data-image="images/promise.webp"></div>
+
+
+        </div>
+
+
       </div>
     </main>
   </div>
@@ -143,14 +556,52 @@
   <footer class="footer">
     <p>&copy; 2025 Segun Abon. All rights reserved.</p>
     <div class="socials">
-      <a href="#">Facebook</a> |
-      <a href="#">YouTube</a> |
-      <a href="#">Instagram</a> |
-      <a href="#">WhatsApp</a>
+      <a href="https://www.facebook.com/share/1AyabPry8k/">Facebook</a> |
+      <a href="https://youtube.com/@segunabon9698?si=_jED02LJs_c9lX0A">YouTube</a> |
+      <a href="https://www.instagram.com/segun_abon?igsh=Mm94MnFzY25kYm9j">Instagram</a> |
+      <a href="https://whatsapp.com/channel/0029VaGKA2KJP20uwVvHMs30">Whatsapp</a>  |
+      <a href="http://tiktok.com/@segun.abon">Tiktok</a>
+       
     </div>
+   <div class="share-section">
+  <button class="btn" onclick="shareSite()">Share this Website</button>
+</div>
   </footer>
 
   <script>
+// Dynamically generate social share buttons for each song (for all songs)
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.social-share-btns').forEach(function(div) {
+    const songTitle = div.getAttribute('data-song-title');
+    const songId = div.getAttribute('data-song-id');
+    const imageUrl = div.getAttribute('data-image');
+    const songUrl = window.location.origin + window.location.pathname + '#' + songId;
+    // Facebook
+    const fb = document.createElement('a');
+    fb.className = 'social-btn facebook';
+    fb.target = '_blank';
+    fb.title = 'Share on Facebook';
+    fb.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(songUrl)}&t=${encodeURIComponent(songTitle)}`;
+    fb.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24"><path fill="#1877f3" d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 5 3.657 9.127 8.438 9.877v-6.987h-2.54v-2.89h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.632.771-1.632 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.343 21.127 22 17 22 12"/></svg>`;
+    // WhatsApp
+    const wa = document.createElement('a');
+    wa.className = 'social-btn whatsapp';
+    wa.target = '_blank';
+    wa.title = 'Share on WhatsApp';
+    wa.href = `https://wa.me/?text=${encodeURIComponent('Listen to ' + songTitle + '! ' + songUrl)}`;
+    wa.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24"><path fill="#25d366" d="M12 2C6.477 2 2 6.477 2 12c0 1.989.583 3.84 1.588 5.4L2 22l4.746-1.561A9.953 9.953 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2m0 18c-1.676 0-3.24-.41-4.6-1.13l-.327-.174-2.82.927.94-2.74-.213-.336A7.963 7.963 0 0 1 4 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8m4.406-5.845c-.242-.121-1.434-.707-1.655-.788-.222-.08-.384-.121-.546.122-.16.242-.625.788-.767.95-.141.161-.282.182-.524.06-.242-.121-1.022-.377-1.947-1.202-.72-.642-1.207-1.433-1.35-1.675-.141-.242-.015-.373.106-.494.109-.108.242-.282.363-.423.121-.141.161-.242.242-.403.08-.161.04-.303-.02-.424-.06-.121-.545-1.314-.747-1.8-.197-.474-.398-.41-.546-.418l-.464-.008c-.161 0-.424.06-.646.303s-.848.828-.848 2.02c0 1.192.868 2.345.988 2.507.121.161 1.71 2.613 4.15 3.562.58.199 1.032.317 1.384.406.581.147 1.11.126 1.528.077.466-.056 1.434-.586 1.637-1.152.202-.566.202-1.051.142-1.152-.06-.101-.22-.161-.462-.282"/></svg>`;
+    // Twitter
+    const tw = document.createElement('a');
+    tw.className = 'social-btn twitter';
+    tw.target = '_blank';
+    tw.title = 'Share on Twitter';
+    tw.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent('Listen to ' + songTitle + '!')}&url=${encodeURIComponent(songUrl)}`;
+    tw.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24"><path fill="#1da1f2" d="M22.46 5.924c-.793.352-1.645.59-2.54.698a4.48 4.48 0 0 0 1.963-2.475 8.94 8.94 0 0 1-2.828 1.082A4.48 4.48 0 0 0 16.11 4c-2.485 0-4.5 2.015-4.5 4.5 0 .353.04.697.116 1.027C7.728 9.37 4.1 7.555 1.67 4.905c-.387.665-.61 1.44-.61 2.267 0 1.563.796 2.942 2.006 3.753-.74-.023-1.436-.227-2.045-.567v.057c0 2.185 1.555 4.008 3.623 4.426-.378.104-.776.16-1.187.16-.29 0-.57-.028-.844-.08.57 1.78 2.223 3.078 4.183 3.113A8.98 8.98 0 0 1 2 19.54a12.68 12.68 0 0 0 6.88 2.017c8.26 0 12.785-6.84 12.785-12.785 0-.195-.004-.39-.013-.583A9.14 9.14 0 0 0 24 4.59a8.98 8.98 0 0 1-2.54.698"/></svg>`;
+    div.appendChild(fb);
+    div.appendChild(wa);
+    div.appendChild(tw);
+  });
+});
     function toggleMenu() {
       const nav = document.getElementById("nav-links");
       nav.classList.toggle("show");
@@ -214,8 +665,25 @@
       }).openIframe();
     }
 
+
+
     function payWithPaystack4() {
       const email = document.getElementById("email4").value;
+      if (!email) return alert("Please enter your email.");
+      PaystackPop.setup({
+        key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+        email: email,
+        amount: 1000 * 100,
+        currency: 'NGN',
+        callback: function() {
+          window.location.href = "https://drive.google.com/uc?export=download&id=1JIabb5NKDXfOcvxJUrHS-AtAUgqVb0o0";
+        },
+      }).openIframe();
+    }
+
+
+    function payWithPaystack5() {
+      const email = document.getElementById("email5").value;
       if (!email) return alert("Please enter your email.");
       PaystackPop.setup({
         key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
@@ -227,7 +695,372 @@
         },
       }).openIframe();
     }
+
+    function payWithPaystack6() {
+      const email = document.getElementById("email6").value;
+      if (!email) return alert("Please enter your email.");
+      PaystackPop.setup({
+        key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+        email: email,
+        amount: 1000 * 100,
+        currency: 'NGN',
+        callback: function() {
+          window.location.href = "https://drive.google.com/uc?export=download&id=1uCtQ6-YF-aYMsDcn-vqPIKfw3KJYtlof";
+        },
+      }).openIframe();
+    }
+
+    function payWithPaystack7() {
+      const email = document.getElementById("email7").value;
+      if (!email) return alert("Please enter your email.");
+      PaystackPop.setup({
+        key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+        email: email,
+        amount: 1000 * 100,
+        currency: 'NGN',
+        callback: function() {
+          window.location.href = "https://drive.google.com/uc?export=download&id=160145QZAARUeDrtnrrENzhV98Zo52Xu_";
+        },
+      }).openIframe();
+    }
+
+  function payWithPaystack8() {
+      const email = document.getElementById("email8").value;
+      if (!email) return alert("Please enter your email.");
+      PaystackPop.setup({
+        key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+        email: email,
+        amount: 1000 * 100,
+        currency: 'NGN',
+        callback: function() {
+          window.location.href = "https://drive.google.com/uc?export=download&id=1pui9nuW6CMe-RSn2HQ02pSRXL14Bi90H";
+        },
+      }).openIframe();
+    }
+    
+  function payWithPaystack9() {
+      const email = document.getElementById("email9").value;
+      if (!email) return alert("Please enter your email.");
+      PaystackPop.setup({
+        key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+        email: email,
+        amount: 1000 * 100,
+        currency: 'NGN',
+        callback: function() {
+          window.location.href = "https://drive.google.com/uc?export=download&id=1G645AvqRKNNUjxEbEDtMmonw8P4U1nfS";
+        },
+      }).openIframe();
+    }
+
+      function payWithPaystack10() {
+      const email = document.getElementById("email10").value;
+      if (!email) return alert("Please enter your email.");
+      PaystackPop.setup({
+        key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+        email: email,
+        amount: 1000 * 100,
+        currency: 'NGN',
+        callback: function() {
+          window.location.href = "https://drive.google.com/uc?export=download&id=18qeCfqfkYHo9cVzUfO_pyAI3owDmDmxq";
+        },
+      }).openIframe();
+    }
+
+      function payWithPaystack11() {
+      const email = document.getElementById("email11").value;
+      if (!email) return alert("Please enter your email.");
+      PaystackPop.setup({
+        key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+        email: email,
+        amount: 1000 * 100,
+        currency: 'NGN',
+        callback: function() {
+          window.location.href = "https://drive.google.com/uc?export=download&id=14szPavUF_jJ7thwXSMTD_xwav3JVxdCb";
+        },
+      }).openIframe();
+    }
+    
+    function payWithPaystack12() {
+      const email = document.getElementById("email12").value;
+      if (!email) return alert("Please enter your email.");
+      PaystackPop.setup({
+        key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+        email: email,
+        amount: 1000 * 100,
+        currency: 'NGN',
+        callback: function() {
+          window.location.href = "https://drive.google.com/uc?export=download&id=1lWxKtLti84e5dEFqjJaUygSNfBwJW4HO";
+        },
+      }).openIframe();
+    }
+       function payWithPaystack13() {
+      const email = document.getElementById("email13").value;
+      if (!email) return alert("Please enter your email.");
+      PaystackPop.setup({
+        key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+        email: email,
+        amount: 1000 * 100,
+        currency: 'NGN',
+        callback: function() {
+          window.location.href = "https://drive.google.com/uc?export=download&id=1U8lgelgKUxPwbMcOLyBTpZYPPItgbJT7";
+        },
+      }).openIframe();
+    }
+
+       function payWithPaystack14() {
+      const email = document.getElementById("email14").value;
+      if (!email) return alert("Please enter your email.");
+      PaystackPop.setup({
+        key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+        email: email,
+        amount: 1000 * 100,
+        currency: 'NGN',
+        callback: function() {
+          window.location.href = "https://drive.google.com/uc?export=download&id=1rNaLmT0Cc34uHbznJyr6Hj5WHbmiibjH";
+        },
+      }).openIframe();
+    }
+     function payWithPaystack15() {
+      const email = document.getElementById("email15").value;
+      if (!email) return alert("Please enter your email.");
+      PaystackPop.setup({
+        key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+        email: email,
+        amount: 1000 * 100,
+        currency: 'NGN',
+        callback: function() {
+          window.location.href = "https://drive.google.com/uc?export=download&id=1kPrrjLVe9rufnEZ8E0b_v8mFH1jHTszm";
+        },
+      }).openIframe();
+    }
+      function payWithPaystack16() {
+      const email = document.getElementById("email16").value;
+      if (!email) return alert("Please enter your email.");
+      PaystackPop.setup({
+        key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+        email: email,
+        amount: 1000 * 100,
+        currency: 'NGN',
+        callback: function() {
+          window.location.href = "https://drive.google.com/uc?export=download&id=182PFn5sZerpFsZPr6fiaioAT2tqNwy5Y";
+        },
+      }).openIframe();
+    }
+    function payWithPaystack17() {
+      const email = document.getElementById("email17").value;
+      if (!email) return alert("Please enter your email.");
+      PaystackPop.setup({
+        key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+        email: email,
+        amount: 1000 * 100,
+        currency: 'NGN',
+        callback: function() {
+          window.location.href = "https://drive.google.com/uc?export=download&id=11zMz7tGufrbCYheVs0moyRyp_pj2FyG8";
+        },
+      }).openIframe();
+    }
+       function payWithPaystack18() {
+      const email = document.getElementById("email18").value;
+      if (!email) return alert("Please enter your email.");
+      PaystackPop.setup({
+        key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+        email: email,
+        amount: 1000 * 100,
+        currency: 'NGN',
+        callback: function() {
+          window.location.href = "https://drive.google.com/uc?export=download&id=1g25W5BWadxybeZOSSeTmT6GJdfaNnfNk";
+        },
+      }).openIframe();
+    }
+        function payWithPaystack19() {
+      const email = document.getElementById("email19").value;
+      if (!email) return alert("Please enter your email.");
+      PaystackPop.setup({
+        key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+        email: email,
+        amount: 1000 * 100,
+        currency: 'NGN',
+        callback: function() {
+          window.location.href = "https://drive.google.com/uc?export=download&id=1Hxbgn8SCtOQEOmIasoC8GzQF8d8Et-UX";
+        },
+      }).openIframe();
+    }
+      function payWithPaystack20() {
+      const email = document.getElementById("email20").value;
+      if (!email) return alert("Please enter your email.");
+      PaystackPop.setup({
+        key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+        email: email,
+        amount: 1000 * 100,
+        currency: 'NGN',
+        callback: function() {
+          window.location.href = "https://drive.google.com/uc?export=download&id=1xn_0CWFqB9FqDYEKi5nE_vhE-NDvP9_D";
+        },
+      }).openIframe();
+    }
+      function payWithPaystack21() {
+      const email = document.getElementById("email21").value;
+      if (!email) return alert("Please enter your email.");
+      PaystackPop.setup({
+        key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+        email: email,
+        amount: 1000 * 100,
+        currency: 'NGN',
+        callback: function() {
+          window.location.href = "https://drive.google.com/uc?export=download&id=1Zbrq8e2nd5BGF6hprTQKtISIh6LPUinU";
+        },
+      }).openIframe();
+    }
+    function payWithPaystack22() {
+      const email = document.getElementById("email22").value;
+      if (!email) return alert("Please enter your email.");
+      PaystackPop.setup({
+        key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+        email: email,
+        amount: 1000 * 100,
+        currency: 'NGN',
+        callback: function() {
+          window.location.href = "https://drive.google.com/uc?export=download&id=1K9euSUUN1LEw0hh3LXNrKOhYx270AOyT";
+        },
+      }).openIframe();
+    }
+    function payWithPaystack23() {
+      const email = document.getElementById("email23").value;
+      if (!email) return alert("Please enter your email.");
+      PaystackPop.setup({
+        key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+        email: email,
+        amount: 1000 * 100,
+        currency: 'NGN',
+        callback: function() {
+          window.location.href = "https://drive.google.com/uc?export=download&id=1NSDj4AgF41YiHtdc6ecy1rvkz9ZTjW4b";
+        },
+      }).openIframe();
+    }
+     function payWithPaystack24() {
+      const email = document.getElementById("email24").value;
+      if (!email) return alert("Please enter your email.");
+      PaystackPop.setup({
+        key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+        email: email,
+        amount: 1000 * 100,
+        currency: 'NGN',
+        callback: function() {
+          window.location.href = "https://drive.google.com/uc?export=download&id=1gZke659Er3jxZVJwpXFNAp4gmFf0KFX7";
+        },
+      }).openIframe();
+    }
+     function payWithPaystack25() {
+      const email = document.getElementById("email25").value;
+      if (!email) return alert("Please enter your email.");
+      PaystackPop.setup({
+        key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+        email: email,
+        amount: 1000 * 100,
+        currency: 'NGN',
+        callback: function() {
+          window.location.href = "https://drive.google.com/uc?export=download&id=1xOE2DgydDUSBAKg4qL2JqOe6IEYKoK-6";
+        },
+      }).openIframe();
+    }
+     function payWithPaystack26() {
+      const email = document.getElementById("email26").value;
+      if (!email) return alert("Please enter your email.");
+      PaystackPop.setup({
+        key: 'pk_live_b82f765b3f8144c254ae10258b6b6603354bb2bf',
+        email: email,
+        amount: 1000 * 100,
+        currency: 'NGN',
+        callback: function() {
+          window.location.href = "https://drive.google.com/uc?export=download&id=10nL8eAnILZfvs-cjy-K1LSnXSwx7OQeT";
+        },
+      }).openIframe();
+    }
+
+
+
+
+
+
+
   </script>
+<script>
+  function shareMusic(songTitle, songUrl, imageUrl) {
+    // Try to share with image if supported
+    if (navigator.canShare && window.File && window.fetch) {
+      fetch(imageUrl)
+        .then(response => response.blob())
+        .then(blob => {
+          const file = new File([blob], imageUrl.split('/').pop(), { type: blob.type });
+          const shareData = {
+            title: songTitle,
+            text: `Listen to ${songTitle} by Segun Abon! Download now.\n\nSee the cover art below.`,
+            url: songUrl,
+            files: [file]
+          };
+          if (navigator.canShare(shareData)) {
+            navigator.share(shareData)
+              .then(() => console.log('Song shared successfully!'))
+              .catch((error) => console.log('Sharing failed', error));
+          } else {
+            // Fallback: share with image URL in text
+            fallbackShare(songTitle, songUrl, imageUrl);
+          }
+        })
+        .catch(() => {
+          fallbackShare(songTitle, songUrl, imageUrl);
+        });
+    } else {
+      fallbackShare(songTitle, songUrl, imageUrl);
+    }
+  }
+
+  function fallbackShare(songTitle, songUrl, imageUrl) {
+    const shareText = `Listen to ${songTitle} by Segun Abon! Download now.\n\nCover art: ${window.location.origin + '/' + imageUrl}\n${songUrl}`;
+    if (navigator.share) {
+      navigator.share({
+        title: songTitle,
+        text: shareText,
+        url: songUrl
+      })
+        .then(() => console.log('Song shared successfully!'))
+        .catch((error) => console.log('Sharing failed', error));
+    } else {
+      navigator.clipboard.writeText(shareText).then(() => {
+        alert("Song link and image copied to clipboard! Share it with your friends.");
+      }).catch(() => {
+        alert("Sharing not supported. Copy this info: " + shareText);
+      });
+    }
+  }
+</script>
+
+
+<script>
+  function shareSite() {
+  const siteUrl = window.location.href;
+  const siteTitle = "Segun Abon - Gospel Music";
+  const siteText = "Experience spirit-filled gospel music by Segun Abon";
+
+    if (navigator.share) {
+      // ✅ Works on supported browsers (mostly mobile)
+      navigator.share({
+        title: siteTitle,
+        text: siteText,
+        url: siteUrl,
+      })
+      .then(() => console.log("Shared successfully"))
+      .catch((error) => console.log("Error sharing:", error));
+    } else {
+      // ❌ Fallback for desktop: copy link to clipboard
+      navigator.clipboard.writeText(siteUrl).then(() => {
+        alert("Link copied to clipboard! Share it with your friends.");
+      }).catch(() => {
+        alert("Sharing not supported. Copy this link: " + siteUrl);
+      });
+    }
+  }
+</script>
 
 </body>
 </html>
